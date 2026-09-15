@@ -1,0 +1,169 @@
+/* Nomad Invest — blogi & artikkelisivut. Sama väripaletti ja typografia
+   kuin etusivulla (preview.html), mutta tavallisena vierittyvänä sivuna
+   ilman kiinteää taustakuvaa — pitkän tekstin lukeminen on selkeämpää
+   tasaisella tummalla pohjalla. */
+
+:root {
+  --bg: #0a0b0e;
+  --ink: #f7f2e6;
+  --ink-soft: #d9cdb8;
+  --ink-faint: #9b9385;
+  --accent: #e9c48a;
+  --line: rgba(217, 205, 184, 0.14);
+  --max: 660px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+h1, h2, .wordmark-text {
+  font-family: 'Marcellus', 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid currentColor; opacity: 0.95; }
+a:hover { opacity: 1; }
+
+/* Fixed header — identical to the front page */
+header.site {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 20;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(6,7,10,0.85), rgba(6,7,10,0));
+  transition: transform 0.35s ease;
+}
+header.site.hide { transform: translateY(-100%); }
+header.site .bar {
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.logo { display: flex; align-items: center; gap: 9px; border-bottom: none; opacity: 1; }
+.logo svg { display: block; flex-shrink: 0; }
+.wordmark-text { font-size: 1.15rem; color: var(--ink); }
+nav.site a { border-bottom: none; color: var(--ink-soft); margin-left: 24px; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 1; font-family: 'Outfit', sans-serif; }
+nav.site a:first-child { margin-left: 0; }
+nav.site a:hover { color: var(--accent); }
+nav.site a.current { color: var(--accent); }
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* Blog listing */
+.page-head { padding: 130px 0 8px; text-align: center; }
+.page-head h1 { font-size: 2.4rem; margin: 0; }
+
+.post-list { list-style: none; margin: 40px 0 90px; padding: 0; }
+.post-list li { padding: 26px 0; border-bottom: 1px solid var(--line); }
+.post-list li:first-child { padding-top: 0; }
+.post-list a.title {
+  display: block;
+  font-family: 'Marcellus', 'DM Serif Display', Georgia, serif;
+  font-size: 1.3rem;
+  color: var(--ink);
+  border-bottom: none;
+  margin-bottom: 6px;
+}
+.post-list a.title:hover { color: var(--accent); }
+.post-meta {
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin: 0 0 8px;
+  font-family: 'Outfit', sans-serif;
+}
+.post-excerpt { color: var(--ink-soft); margin: 0; font-size: 0.98rem; }
+
+/* Single article */
+article.post header.post-head {
+  padding: 150px 0 32px;
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+article.post header.post-head h1 { font-size: 2.1rem; margin: 0 0 16px; }
+article.post .content { padding: 40px 0 20px; }
+article.post .content p { margin: 0 0 22px; color: var(--ink-soft); }
+article.post .content p:first-of-type { font-size: 1.08rem; color: var(--ink); }
+article.post .content h3 { font-size: 1.2rem; margin: 34px 0 14px; color: var(--ink); }
+.back-link { display: inline-block; margin: 8px 0 56px; font-size: 0.9rem; }
+
+article.post .content p.disclaimer {
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+}
+article.post .content h3 { font-family: 'Marcellus', 'DM Serif Display', Georgia, serif; font-weight: 400; }
+
+article.post .content blockquote {
+  margin: 30px 0;
+  padding: 4px 0 4px 20px;
+  border-left: 2px solid var(--accent);
+  color: var(--ink);
+  font-style: italic;
+}
+article.post .content blockquote p { margin: 0; color: inherit; font-size: inherit; }
+
+article.post .content ul,
+article.post .content ol {
+  margin: 0 0 22px;
+  padding-left: 22px;
+  color: var(--ink-soft);
+}
+article.post .content li { margin: 0 0 10px; }
+article.post .content li:last-child { margin-bottom: 0; }
+
+article.post .content figure {
+  margin: 32px 0;
+}
+article.post .content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 3px;
+}
+article.post .content figcaption {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+  text-align: center;
+}
+
+footer.site { padding: 40px 0 70px; text-align: center; }
+footer.site .addr { margin: 0; color: var(--ink-faint); font-size: 0.85rem; font-family: 'Outfit', sans-serif; }
+footer.site .addr a { color: var(--ink-faint); border-bottom: none; }
+footer.site .addr a:hover { color: var(--accent); }
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .page-head { padding: 110px 0 8px; }
+  .page-head h1 { font-size: 2rem; }
+  article.post header.post-head { padding: 120px 0 28px; }
+  article.post header.post-head h1 { font-size: 1.7rem; }
+  nav.site a { margin-left: 14px; font-size: 0.72rem; }
+}
